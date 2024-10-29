@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package emergency;
+
+// DisasterService for handling emergency situations
+service DisasterService {
+  // Method to send information about a new emergency situation
+  rpc ReportDisaster (DisasterReportRequest) returns (DisasterReportResponse);
+}
+
+// Request message for sending information about a new emergency situation
+message DisasterReportRequest {
+  string city_name = 1;          // Name of the city where the emergency occurred
+  int32 disaster_code = 2;       // Code for the type of disaster (e.g., 101 - flood, 102 - tsunami)
+  string description = 3;        // Additional description of the issue
+}
+
+// Response to the report of a new emergency situation
+message DisasterReportResponse {
+  string status = 1;             // Operation status (e.g., "Message received")
+}
